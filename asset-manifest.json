@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/equinoccio-ludico-carre/static/css/main.eb95f5cd.css",
+    "main.js": "/equinoccio-ludico-carre/static/js/main.9c0a243e.js",
+    "static/js/787.ad5f21fe.chunk.js": "/equinoccio-ludico-carre/static/js/787.ad5f21fe.chunk.js",
+    "static/media/miniEquinoccioLudicoLogo.png": "/equinoccio-ludico-carre/static/media/miniEquinoccioLudicoLogo.25a0320df65928827d51.png",
+    "index.html": "/equinoccio-ludico-carre/index.html",
+    "main.eb95f5cd.css.map": "/equinoccio-ludico-carre/static/css/main.eb95f5cd.css.map",
+    "main.9c0a243e.js.map": "/equinoccio-ludico-carre/static/js/main.9c0a243e.js.map",
+    "787.ad5f21fe.chunk.js.map": "/equinoccio-ludico-carre/static/js/787.ad5f21fe.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb95f5cd.css",
+    "static/js/main.9c0a243e.js"
+  ]
+}
