@@ -1,5 +1,6 @@
 import './Navbar.css';
 import logo from '../miniEquinoccioLudicoLogo.png';
+import CartWidget from './CartWidget';
 
 function Navbar() {
   return (
@@ -28,6 +29,7 @@ function Navbar() {
               <a className="nav-link disabled">Contacto</a>
             </li>
           </ul>
+          <CartWidget />
         </div>
       </div>
     </nav>
