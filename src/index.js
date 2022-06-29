@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import './index.css';
 import logo from './miniEquinoccioLudicoLogo.png';
-import Navbar from './Navbar';
+import Navbar from './components/Navbar';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
