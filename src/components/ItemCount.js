@@ -10,9 +10,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
         setCount (ValAnt => ValAnt > initial ? count - 1 : count);
     };
     return (
-        <div className="container-fluid bg-warning">
-            <h1>TIENDA</h1>
-            <h3>Producto 1</h3>
+        <div>
             <div className="d-flex justify-content-center">
                 <button className="btn btn-danger" onClick={decrementar}>-</button>
                 <h4 className="px-3">{count}</h4>
