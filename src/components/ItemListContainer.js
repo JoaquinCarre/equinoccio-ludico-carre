@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ItemList from './ItemList';
 import boardGames from '../boardGames.json'
+import ItemDetailContainer from './ItemDetailContainer';
 
 const ItemListContainer = ({greeting}) => {
   const [list, setList] = useState([]);
@@ -27,9 +28,10 @@ const ItemListContainer = ({greeting}) => {
     :
       <div>
         <div>{greeting}</div>
-        <div className="container-fluid bg-warning">
+        <div className="container-fluid bg-warning row">
           <h2 className='fs-1'>TIENDA</h2>
           <ItemList item={list} />
+          <ItemDetailContainer />
         </div>
       </div>
     }
