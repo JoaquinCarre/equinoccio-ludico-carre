@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import boardGames from '../boardGames.json';
 import ItemDetail from './ItemDetail';
 
@@ -15,11 +15,13 @@ const ItemDetailContainer = () => {
   const [isLoadingDet, setIsLoadingDet] = useState(true);
   const [itemDet, setItemDet] = useState ([]);
   
+  useEffect (() => {
   getItem().then((respo)=>{
     console.log(respo);
     setItemDet (respo);
     setIsLoadingDet(false);
   });
+}, []);
   
   return (
     <div className='col'>{ isLoadingDet ? 
