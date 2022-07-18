@@ -3,7 +3,7 @@ import Item from './Item'
 
 const ItemList = ({item}) => {
   return (
-    <div className='row col'>
+    <div className='col row justify-content-center'>
       {item.map (({ id , title, pos , genre, minPlayers, maxPlayers, time, age, price})=>(
         <Item id={id} 
         title={title}
