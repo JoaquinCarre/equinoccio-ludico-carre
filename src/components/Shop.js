@@ -7,7 +7,7 @@ const Shop = () => {
     <div>
         <div className="container-fluid bg-warning">
           <h2 className='titlePages'>TIENDA</h2>
-          <div className='row justify-content-center'>
+          <div className='row justify-content-center m-auto'>
           <Category />
           <Outlet />
           </div>

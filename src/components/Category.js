@@ -4,8 +4,8 @@ import boardGames from '../boardGames.json';
 
 const Category = () => {
   return (
-    <div className='col-md-2 row'>
-      <div className='bg-warning list-group col'>
+    <div className='col-md-3 row'>
+      <div className='bg-warning list-group col p-0'>
         <h6 className='text-md-start'>Categorías por Género:</h6>
         {boardGames.map((bGLinks) => (
             <Link className='list-group-item list-group-item-action'
