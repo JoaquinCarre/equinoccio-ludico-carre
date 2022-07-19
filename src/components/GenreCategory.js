@@ -5,7 +5,6 @@ import Item from './Item';
 
 const GenreCategory = () => {
     let params = useParams();
-    console.log (params);
     const itemGenre = boardGames;
     return (
         <div className='col bg-warning container'>

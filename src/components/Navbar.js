@@ -15,8 +15,7 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-{/*           <a className="nav-link active" aria-current="page" href="#">Inicio</a> */}              
+            <li className="nav-item">            
               <Link to="/" className="nav-link active" aria-current="page">Inicio</Link>
             </li>
             <li className="nav-item">
@@ -26,7 +25,6 @@ function Navbar() {
               <a className="nav-link disabled">Noticias</a>
             </li>
             <li className="nav-item">
-{/*               <a className="nav-link disabled">Tienda</a> */}
               <Link to="/tienda" className="nav-link active" aria-current="page">Tienda</Link>
             </li>
             <li className="nav-item">

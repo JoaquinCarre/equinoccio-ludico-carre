@@ -9,7 +9,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Shop from './components/Shop';
 import ItemListContainer from './components/ItemListContainer';
 import WelcomeHome from './components/WelcomeHome';
-import Category from "./components/Category";
 import ItemDetailContainer from './components/ItemDetailContainer';
 import GenreCategory from './components/GenreCategory';
 
