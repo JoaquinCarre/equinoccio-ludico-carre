@@ -5,29 +5,11 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './index.css';
 import App from './App.js'
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Shop from './components/Shop';
-import ItemListContainer from './components/ItemListContainer';
-import WelcomeHome from './components/WelcomeHome';
-import ItemDetailContainer from './components/ItemDetailContainer';
-import GenreCategory from './components/GenreCategory';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={(<App />)} >
-          <Route index element={(<WelcomeHome />)} />
-          <Route path="tienda" element={(<Shop />)} >
-            <Route index element={(<ItemListContainer />)} />
-            <Route path="categoria/:genre" element={(<GenreCategory />)} />
-          </Route>
-          <Route path="item/:pos" element={(<ItemDetailContainer />)} />
-          <Route path="*" element={(<WelcomeHome />)} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );
 

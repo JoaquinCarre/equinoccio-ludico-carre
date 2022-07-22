@@ -1,18 +1,28 @@
-import Navbar from './components/Navbar';
-import { Outlet } from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from './components/Home';
+import Shop from './components/Shop';
+import ItemListContainer from './components/ItemListContainer';
+import WelcomeHome from './components/WelcomeHome';
+import ItemDetailContainer from './components/ItemDetailContainer';
+import GenreCategory from './components/GenreCategory';
 
 function App () {
     return (
-        <>
-        <nav className='sticky-top'>
-          <Navbar />
-        </nav>
-        <main className='container-fluid bg-warning m-0 p-0'>
-          <div className='text-center'>
-            <Outlet />
-          </div>
-        </main>
-        </>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={(<Home />)} >
+          <Route index element={(<WelcomeHome />)} />
+          <Route path="tienda" element={(<Shop />)} >
+            <Route index element={(<ItemListContainer />)} />
+            <Route path="categoria/:genre" element={(<GenreCategory />)} />
+          </Route>
+          <Route path="item/:pos" element={(<ItemDetailContainer />)} />
+          <Route path="*" element={(<WelcomeHome />)} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
     );
 }
 
