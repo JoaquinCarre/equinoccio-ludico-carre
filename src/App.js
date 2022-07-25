@@ -7,9 +7,11 @@ import ItemListContainer from './components/ItemListContainer';
 import WelcomeHome from './components/WelcomeHome';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import GenreCategory from './components/GenreCategory';
+import { CartProvider } from './context/CartContext';
 
 function App () {
     return (
+      <CartProvider>
       <BrowserRouter>
       <Routes>
         <Route path="/" element={(<Home />)} >
@@ -23,6 +25,7 @@ function App () {
         </Route>
       </Routes>
     </BrowserRouter>
+    </CartProvider>
     );
 }
 
