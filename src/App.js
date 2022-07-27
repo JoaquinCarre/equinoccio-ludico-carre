@@ -8,6 +8,7 @@ import WelcomeHome from './components/WelcomeHome';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import GenreCategory from './components/GenreCategory';
 import { CartProvider } from './context/CartContext';
+import Cart from './components/Cart';
 
 function App () {
     return (
@@ -21,6 +22,7 @@ function App () {
             <Route path="categoria/:genre" element={(<GenreCategory />)} />
           </Route>
           <Route path="item/:pos" element={(<ItemDetailContainer />)} />
+          <Route path="/cart" element={(<Cart />)} />
           <Route path="*" element={(<WelcomeHome />)} />
         </Route>
       </Routes>
