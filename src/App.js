@@ -6,7 +6,6 @@ import Shop from './components/Shop';
 import ItemListContainer from './components/ItemListContainer';
 import WelcomeHome from './components/WelcomeHome';
 import ItemDetailContainer from './components/ItemDetailContainer';
-import GenreCategory from './components/GenreCategory';
 import { CartProvider } from './context/CartContext';
 import Cart from './components/Cart';
 
@@ -19,7 +18,7 @@ function App () {
           <Route index element={(<WelcomeHome />)} />
           <Route path="tienda" element={(<Shop />)} >
             <Route index element={(<ItemListContainer />)} />
-            <Route path="categoria/:genre" element={(<GenreCategory />)} />
+            <Route path="categoria/:genre" element={(<ItemListContainer />)} />
           </Route>
           <Route path="item/:pos" element={(<ItemDetailContainer />)} />
           <Route path="/cart" element={(<Cart />)} />
