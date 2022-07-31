@@ -1,5 +1,6 @@
 [
     {
+        "doc": "fbEk67VtJuGdAlvPDiTh",
         "pictureUrl": "cajaRobomeke.png",
         "title": "Robomeke",
         "genre": "Estrategia",
@@ -13,6 +14,7 @@
         "id": "RobomekeGame"
     },
     {
+        "doc": "TwEFcL2KvhKO6jz9gtAS",
         "pictureUrl": "cajaPancú.png",
         "title": "Pancú",
         "genre": "Familiar",
@@ -26,6 +28,7 @@
         "id": "PancuGame"
     },
     {
+        "doc": "4qk4Dshin6jGiX6pgq6W",
         "pictureUrl": "cajaRoliwar.png",
         "title": "Roliwar",
         "genre": "Roll & Write",
@@ -39,6 +42,7 @@
         "id": "RoliwarGame"
     },
     {
+        "doc": "MLMJ0smgduQjexfgSEv5",
         "pictureUrl": "cajaEdificiosLocos.png",
         "title": "Edificios Locos",
         "genre": "Filler",

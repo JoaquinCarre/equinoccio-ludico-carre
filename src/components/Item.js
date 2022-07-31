@@ -5,12 +5,12 @@ import logo2 from '../images/cajaPancú.png'
 import logo3 from '../images/cajaRoliwar.png'
 import logo4 from '../images/cajaEdificiosLocos.png'
 
-const Item = ({ id, title, pos, genre, minPlayers, maxPlayers, time, age, price}) => {
+const Item = ({ id, title, pos, doc, genre, minPlayers, maxPlayers, time, age, price}) => {
   const listLogos = [logo1, logo2, logo3, logo4]
   return (
     <>
       <div key={id} className='col bg-light rounded m-3 card'>
-        <Link to={`/item/${pos}`}
+        <Link to={`/item/${doc}`}
           key={id}
           ><img width={150} src={listLogos[pos-1]} alt={id} className='card-img-top bg-primary'/></Link>
         <h2 className='card-title bg-danger opacity-75 text-white m-0'>{title}</h2>
@@ -25,7 +25,7 @@ const Item = ({ id, title, pos, genre, minPlayers, maxPlayers, time, age, price}
             <h3>${price}</h3>
           </div>
           <div className='justify-content-end'>
-          <Link to={`/item/${pos}`}
+          <Link to={`/item/${doc}`}
           key={id}
           ><button className='btn btn-primary'>Comprar</button></Link>
           </div>

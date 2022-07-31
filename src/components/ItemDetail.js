@@ -18,9 +18,9 @@ const ItemDetail = ({item}) => {
       <img width={250} src={listLogos[item.pos-1]} alt={item.id} className='img-fluid' />
       <p className='lead'>{item.description}</p>
       <div className='text-start d-flex flex-wrap justify-content-between'>
-        <p className='m-2'><strong>- Género: </strong>{item.genre}</p>
+        <p className='m-2'><strong>- Género: </strong>{item.categoryGenreId}</p>
         <p className='m-2'><strong>- N° Jugadores: </strong>{item.minPlayers} a {item.maxPlayers}</p> 
-        <p className='m-2'><strong>- Tiempo Aproximado: </strong>{item.time}</p>
+        <p className='m-2'><strong>- Tiempo Aproximado: </strong>{item.duration}</p>
         <p className='m-2'><strong>- Edad: </strong>{item.age} años</p>
       </div>
       <h3 className='m-4'>Precio Actual por Unidad: ${item.price}</h3>
