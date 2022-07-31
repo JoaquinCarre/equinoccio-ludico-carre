@@ -12,7 +12,7 @@ const ItemCount = ({stock, initial, onAdd}) => {
         setCount (ValAnt => ValAnt > initial ? count - 1 : count);
     };
 
-    if (buy == false) {
+    if (buy === false) {
         return (
             <div>
                 <div className="d-flex justify-content-center">
