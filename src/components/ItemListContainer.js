@@ -37,7 +37,7 @@ const ItemListContainer = () => {
         const queryItemList = await getDocs(collection(db, "items")).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ doc: doc.id, ...doc.data() }))) })
         console.log(queryItemList);
       };
-      noFilterItems(genre);
+      noFilterItems();
     };
   }, [genre]);
 
