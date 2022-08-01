@@ -15,7 +15,6 @@ const ItemListContainer = () => {
     const getItems = async () => {
       const queryItems = await getDocs(collection(db, "items"));
       const itemsList = queryItems.docs.map((doc) => {setIsLoading(true); setProducts({ doc: doc.id, ...doc.data() })});
-      //seteo lo que me devuelve el mapeo del resultado del snapshot 
     };
   }, []);
 
@@ -31,12 +30,14 @@ const ItemListContainer = () => {
         const q = query(collection(db, "items"), where("categoryGenreId", "==", categoryGenre), limit(1));
         const queryItemDetail = await getDocs(q).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ doc: doc.id, ...doc.data() }))) })
         console.log(queryItemDetail);
-        //seteo lo que me devuelve el mapeo del resultado del snapshot 
-
       };
       filterItems(genre);
     } else {
-      setProducts(boardGames);
+      const noFilterItems = async () => {
+        const queryItemList = await getDocs(collection(db, "items")).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ doc: doc.id, ...doc.data() }))) })
+        console.log(queryItemList);
+      };
+      noFilterItems(genre);
     };
   }, [genre]);
 
