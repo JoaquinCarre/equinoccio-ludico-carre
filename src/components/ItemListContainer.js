@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import boardGames from '../boardGames.json';
 import db from '../firebase.js'
 import { query, where, limit, getDocs, collection } from 'firebase/firestore'
 

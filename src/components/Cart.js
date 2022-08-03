@@ -8,7 +8,7 @@ import logo4 from '../images/cajaEdificiosLocos.png';
 
 const Cart = () => {
     const listLogos = [logo1, logo2, logo3, logo4];
-    const { cart, removeItem, clear, addTotalPrice, totalP, setTotalP } = useContext(CartContext);
+    const { cart, removeItem, clear, addTotalPrice, totalP, setTotalP, sendOrder } = useContext(CartContext);
 
     useEffect(() => {
         addTotalPrice()
@@ -19,9 +19,6 @@ const Cart = () => {
         addTotalPrice()
     }, [cart]);
 
-    //mostrar estructura de carrito
-    //condicional, si el carrito está vacío mostrar mensaje "No hay productos agregados", sino mostrar el desglose de los productos
-    //agregar botón para eliminar cada producto con "removeItem del context"
     return (
         <div className="container">
             <table className="table caption-top">
@@ -67,7 +64,7 @@ const Cart = () => {
                         <td colspan="6">
                             <div className="d-flex justify-content-end">
                             <Link to="/tienda"><button className="btn btn-light mx-2">Agregar más productos</button></Link>
-                            <button className="btn btn-success">Confirmar Compra</button>
+                            <button className="btn btn-success" onClick={sendOrder}>Confirmar Compra</button>
                             </div>
                         </td>
                     </tr>

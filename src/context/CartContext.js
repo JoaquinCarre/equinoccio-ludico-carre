@@ -1,4 +1,7 @@
 import { createContext, useState } from 'react';
+import db from '../firebase.js';
+import { addDoc, collection, doc } from 'firebase/firestore';
+
 
 const CartContext = createContext();
 
@@ -6,6 +9,7 @@ const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [totalP, setTotalP] = useState(0);
     const [totalQ, setTotalQ] = useState(0);
+    const [orderId, setOrderId] = useState("");
 
     const isInCart = (itemId) => {
         const didExist = cart.find(el => el.id === itemId);
@@ -27,13 +31,13 @@ const CartProvider = ({ children }) => {
     }
 
     const addItem = (item) => {
-        const itemIsInCart = isInCart(item.id);
+        const itemIsInCart = isInCart(item.title);
         if (!itemIsInCart) {
             const cartAddNewItem = [...cart, item];
             setCart(cartAddNewItem);
         } else {
-            const addItemQuantity = addQuantity(item.quantity, item.id);
-            const removeRepeatItemCart = cart.filter(el => el.id !== item.id);
+            const addItemQuantity = addQuantity(item.quantity, item.title);
+            const removeRepeatItemCart = cart.filter(el => el.title !== item.title);
             setCart([...removeRepeatItemCart, addItemQuantity]);
             //sumarle al producto que se haya elegido la cantidad agrtegada desde ItemDetail al carrito para que el mismo no se duplique 
         }
@@ -41,7 +45,7 @@ const CartProvider = ({ children }) => {
     console.log(cart);
 
     const removeItem = (item) => {
-        const cartRemoveItem = cart.filter(el => el.id !== item.id);
+        const cartRemoveItem = cart.filter(el => el.title !== item.title);
         setCart(cartRemoveItem);
     }
 
@@ -49,7 +53,21 @@ const CartProvider = ({ children }) => {
         setCart([]);
     }
 
-    const data = { cart, isInCart, addTotalPrice, totalP, setTotalP, addTotalQuantity, totalQ, setTotalQ, addItem, removeItem, clear }
+    const sendOrder = async () => {
+        const order = {
+            buyer: { name: "Jorge", phone: "(341)437584", email: "jorge@jugador.com" },
+            item: cart.map((el) => ({ id: el.title, title: el.title, price: el.price })),
+            date: new Date(),
+            total: totalP,
+        }
+        const ordersCollection = collection(db, "orders");
+        await addDoc(ordersCollection, order).then(({ id }) => setOrderId(id));
+        console.log (order);
+        alert ("Compra exitosa, tu número de orden es: " + orderId);
+        setCart([]);
+    }
+
+    const data = { cart, isInCart, addTotalPrice, totalP, setTotalP, addTotalQuantity, totalQ, setTotalQ, addItem, removeItem, clear, sendOrder }
 
     return (
         <CartContext.Provider value={data}>
