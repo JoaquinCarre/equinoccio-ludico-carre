@@ -7,6 +7,9 @@ import WelcomeHome from './components/WelcomeHome';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { CartProvider } from './context/CartContext';
 import Cart from './components/Cart';
+import CartForm from './components/CartForm';
+import CartPayForm from './components/CartPayForm';
+import CartBuyed from './components/CartBuyed';
 
 function App () {
     return (
@@ -21,6 +24,9 @@ function App () {
           </Route>
           <Route path="item/:doc" element={(<ItemDetailContainer />)} />
           <Route path="/cart" element={(<Cart />)} />
+          <Route path="/cartStep1" element={(<CartForm />)} />
+          <Route path="/cartStep2" element={(<CartPayForm />)} />
+          <Route path="/productBuyed" element={(<CartBuyed />)} />
           <Route path="*" element={(<WelcomeHome />)} />
         </Route>
       </Routes>

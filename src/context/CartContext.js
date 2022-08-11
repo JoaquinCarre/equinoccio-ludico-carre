@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import db from '../firebase.js';
-import { addDoc, collection, doc } from 'firebase/firestore';
+import { addDoc, collection } from 'firebase/firestore';
 
 
 const CartContext = createContext();
@@ -12,12 +12,12 @@ const CartProvider = ({ children }) => {
     const [orderId, setOrderId] = useState("");
 
     const isInCart = (itemId) => {
-        const didExist = cart.find(el => el.id === itemId);
+        const didExist = cart.find(el => el.title === itemId);
         return didExist;
     };
 
     const addQuantity = (itemQ, itemId) => {
-        const cartQuantity = cart.filter(el => el.id === itemId);
+        const cartQuantity = cart.filter(el => el.title === itemId);
         const addItemCartQuantity = { ...cartQuantity[0], quantity: cartQuantity[0].quantity + itemQ }
         return addItemCartQuantity;
     }
@@ -53,21 +53,19 @@ const CartProvider = ({ children }) => {
         setCart([]);
     }
 
-    const sendOrder = async () => {
+    const sendOrder = async (name, phone, email) => {
         const order = {
-            buyer: { name: "Jorge", phone: "(341)437584", email: "jorge@jugador.com" },
+            buyer: { name: {name}, phone: {phone}, email: {email} },
             item: cart.map((el) => ({ id: el.title, title: el.title, price: el.price })),
             date: new Date(),
             total: totalP,
         }
         const ordersCollection = collection(db, "orders");
         await addDoc(ordersCollection, order).then(({ id }) => setOrderId(id));
-        console.log (order);
-        alert ("Compra exitosa, tu número de orden es: " + orderId);
-        setCart([]);
+        console.log(order);
     }
 
-    const data = { cart, isInCart, addTotalPrice, totalP, setTotalP, addTotalQuantity, totalQ, setTotalQ, addItem, removeItem, clear, sendOrder }
+    const data = { cart, isInCart, addTotalPrice, totalP, setTotalP, addTotalQuantity, totalQ, setTotalQ, addItem, removeItem, clear, sendOrder, orderId }
 
     return (
         <CartContext.Provider value={data}>

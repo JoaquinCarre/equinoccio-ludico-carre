@@ -50,29 +50,29 @@ const Cart = () => {
                             <td><Link to="/tienda"><button className="btn btn-primary">Ir a la Tienda</button></Link></td>
                         </tr>}
                 </tbody>
-                
+
                 {cart.length !== 0 ?
-                <tfoot className="table-dark">
-                    <tr>
-                        <td colspan="3"></td>
-                        <th>Precio Total</th>
-                        <td>${totalP}</td>
-                        <td><button className="btn btn-danger" onClick={() => clear()}>Eliminar Todo</button></td>
-                    </tr>
-                    <tr>
-                    <th scope="col"></th>
-                        <td colspan="6">
-                            <div className="d-flex justify-content-end">
-                            <Link to="/tienda"><button className="btn btn-light mx-2">Agregar más productos</button></Link>
-                            <button className="btn btn-success" onClick={sendOrder}>Confirmar Compra</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tfoot>
+                    <tfoot className="table-dark">
+                        <tr>
+                            <td colspan="3"></td>
+                            <th>Precio Total</th>
+                            <td>${totalP}</td>
+                            <td><button className="btn btn-danger" onClick={() => clear()}>Eliminar Todo</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="col"></th>
+                            <td colspan="6">
+                                <div className="d-flex justify-content-end">
+                                    <Link to="/tienda"><button className="btn btn-light mx-2">Agregar más productos</button></Link>
+                                    <Link to="/cartStep1"><button className="btn btn-success">Confirmar Compra</button></Link>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
                     :
                     <></>
-                } 
-                
+                }
+
 
             </table>
         </div>
