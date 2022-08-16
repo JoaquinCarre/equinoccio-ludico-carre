@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList';
-import db from '../firebase.js'
+import db, { getProducts, getAllProducts } from '../firebase.js'
 import { query, where, limit, getDocs, collection } from 'firebase/firestore'
 
 const ItemListContainer = () => {
@@ -12,43 +12,48 @@ const ItemListContainer = () => {
   //obtengo de la base de datos importada del firebase.js
   useEffect(() => {
     const getItems = async () => {
-      const queryItems = await getDocs(collection(db, "items"));
-      const itemsList = queryItems.docs.map((doc) => {setIsLoading(true); setProducts({ doc: doc.id, ...doc.data() })});
+      await getAllProducts().then((snapshot) => {
+        snapshot.docs.map((doc) => {
+          setIsLoading(true);
+          setProducts({ doc: doc.id, ...doc.data() });
+          if (products != []) {
+            const itemPromise = new Promise((resolve, reject) => {
+              setTimeout(() => { resolve(products); }, 1000);
+            });
+            console.log (itemPromise);
+            itemPromise.then((resp) => {
+              console.log (resp);
+              setList(resp);
+              setIsLoading(false);
+            });
+          }
+
+        })
+      });
     };
+
   }, []);
 
   console.log(products);
 
-  let { genre } = useParams();
+  const { genre } = useParams();
 
   //veo si coinciden los géneros de los juegos de mesa con el seleccionado por categoría
   useEffect(() => {
-    setIsLoading(true); 
-    if (genre) {
-      const filterItems = async (categoryGenre) => {
-        const q = query(collection(db, "items"), where("categoryGenreId", "==", categoryGenre), limit(1));
-        const queryItemDetail = await getDocs(q).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ doc: doc.id, ...doc.data() }))) })
-        console.log(queryItemDetail);
-      };
-      filterItems(genre);
-    } else {
-      const noFilterItems = async () => {
-        const queryItemList = await getDocs(collection(db, "items")).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ doc: doc.id, ...doc.data() }))) })
-        console.log(queryItemList);
-      };
-      noFilterItems();
-    };
+    setIsLoading(true);
+    getProducts(genre).then((snapshot) => { setProducts(snapshot.docs.map((doc) => ({ doc: doc.id, ...doc.data() }))) });
+    const item = new Promise((resolve, reject) => {
+      setTimeout(() => { resolve(products); }, 1000);
+    });
+    item.then((resp) => {
+      setList(resp);
+      setIsLoading(false);
+    });
   }, [genre]);
 
 
   // resuelvo la promesa con lo que fue seteado de productos
-  const item = new Promise((resolve, reject) => {
-    setTimeout(() => { resolve(products); }, 0);
-  });
-  item.then((resp) => {
-    setList(resp);
-    setIsLoading(false);
-  })
+
 
   //renderizo el listado de items completo o filtrado
   return (

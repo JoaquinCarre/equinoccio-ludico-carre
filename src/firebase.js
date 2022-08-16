@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDoc, getDocs, collection, query, where, limit } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYSq1mpp_ZEVrxM5LpeFtDyGohNwGCRRI",
@@ -15,3 +15,29 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 export default db;
+
+export const getProducts = async (categoryGenre) => {
+  if (categoryGenre) {
+    return await getProductsByCategoryGenre(categoryGenre);
+  } else {
+    return await getAllProducts();
+  }
+};
+
+/* export const getProductById = async (productId) => {
+  if (!productId) throw new Error("Missing productId");
+
+  return (await getDoc(doc(db, "items", productId))).data();
+}; */
+
+export const getProductsByCategoryGenre = async (categoryGenre) => {
+  if (!categoryGenre) throw new Error("Missing categoryGenreId");
+
+  const q = query(collection(db, "items"), where("categoryGenreId", "==", categoryGenre), limit(1));
+  return await getDocs(q);
+};
+
+export const getAllProducts = async () => {
+  const q = query(collection(db, "items"));
+  return await getDocs(q);
+};
