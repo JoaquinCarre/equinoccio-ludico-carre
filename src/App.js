@@ -10,6 +10,7 @@ import Cart from './components/Cart';
 import CartForm from './components/CartForm';
 import CartPayForm from './components/CartPayForm';
 import CartBuyed from './components/CartBuyed';
+import BoardGamesCatalog from './components/BoardGamesCatalog';
 
 function App () {
     return (
@@ -18,6 +19,7 @@ function App () {
       <Routes>
         <Route path="/" element={(<Home />)} >
           <Route index element={(<WelcomeHome />)} />
+          <Route path="catalogo" element={(<BoardGamesCatalog />)} />
           <Route path="tienda" element={(<Shop />)} >
             <Route index element={(<ItemListContainer />)} />
             <Route path="categoria/:genre" element={(<ItemListContainer />)} />

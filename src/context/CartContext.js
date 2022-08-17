@@ -1,6 +1,5 @@
 import { createContext, useState } from 'react';
-import db from '../firebase.js';
-import { addDoc, collection } from 'firebase/firestore';
+import { getOrdersCart } from '../firebase.js';
 
 
 const CartContext = createContext();
@@ -55,13 +54,12 @@ const CartProvider = ({ children }) => {
 
     const sendOrder = async (name, phone, email) => {
         const order = {
-            buyer: { name: {name}, phone: {phone}, email: {email} },
+            buyer: { name: { name }, phone: { phone }, email: { email } },
             item: cart.map((el) => ({ id: el.title, title: el.title, price: el.price })),
             date: new Date(),
             total: totalP,
         }
-        const ordersCollection = collection(db, "orders");
-        await addDoc(ordersCollection, order).then(({ id }) => setOrderId(id));
+        getOrdersCart(order).then(({ id }) => setOrderId(id));
         console.log(order);
     }
 

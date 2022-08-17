@@ -96,7 +96,8 @@ const CartForm = () => {
                     </div>
                 </div>
 
-                <div className="form-group">
+                <div className="form-group text-center">
+                <button className="btn btn-dark mx-2" onClick={() => navigate(`/cart`)}>Volver al Carrito</button>
                     {nextButton()}
                 </div>
 

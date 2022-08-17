@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc, getDocs, collection, query, where, limit } from "firebase/firestore";
+import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, limit } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYSq1mpp_ZEVrxM5LpeFtDyGohNwGCRRI",
@@ -24,12 +24,6 @@ export const getProducts = async (categoryGenre) => {
   }
 };
 
-/* export const getProductById = async (productId) => {
-  if (!productId) throw new Error("Missing productId");
-
-  return (await getDoc(doc(db, "items", productId))).data();
-}; */
-
 export const getProductsByCategoryGenre = async (categoryGenre) => {
   if (!categoryGenre) throw new Error("Missing categoryGenreId");
 
@@ -40,4 +34,15 @@ export const getProductsByCategoryGenre = async (categoryGenre) => {
 export const getAllProducts = async () => {
   const q = query(collection(db, "items"));
   return await getDocs(q);
+};
+
+export const getProductById = async (productId) => {
+  if (!productId) throw new Error("Missing productId");
+
+  return (await getDoc(doc(db, "items", productId))).data();
+};
+
+export const getOrdersCart = async (order) => {
+  const ordersCollection = collection(db, "orders");
+  return await addDoc(ordersCollection, order);
 };

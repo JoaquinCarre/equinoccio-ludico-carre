@@ -22,10 +22,7 @@ function Navbar() {
                 <Link to="/" className="nav-link active" aria-current="page">Inicio</Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link disabled">Juegos</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled">Noticias</a>
+              <Link to="/catalogo" className="nav-link active" aria-current="page">Catálogo de Juegos</Link>
               </li>
               <li className="nav-item">
                 <Link to="/tienda" className="nav-link active" aria-current="page">Tienda</Link>

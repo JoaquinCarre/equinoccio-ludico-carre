@@ -32,8 +32,8 @@ const CartPayForm = () => {
                                 <span className="help-block text-muted small-font" >  CVV</span>
                                 <input type="text" className="form-control" placeholder="CVV" />
                             </div>
-                            <div className="col-md-3 col-sm-3 col-xs-3">
-                                <img src={CCImage} className="img-rounded" width={60} />
+                            <div className="col-md-3 col-sm-3 col-xs-3 text-start">
+                                <img src={CCImage} className="img-rounded mt-3 p-0" width={60} />
                             </div>
                         </div>
                         <div className="row ">

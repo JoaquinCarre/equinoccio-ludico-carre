@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import boardGames from '../boardGames.json';
 import ItemDetail from './ItemDetail';
 import { useParams, Outlet } from 'react-router-dom';
 import Category from './Category';
-import db from '../firebase.js'
-import { getDoc, doc } from 'firebase/firestore'
-
-
-const getItemById = async (itemId) => {
-  return (await getDoc(doc(db, "items", itemId))).data();
-}
-
+import {getProductById} from '../firebase.js';
 
 const ItemDetailContainer = () => {
   let { doc } = useParams();
@@ -19,7 +11,7 @@ const ItemDetailContainer = () => {
   const [itemDet, setItemDet] = useState([]);
 
   useEffect(() => {
-    getItemById(doc).then((respo) => {
+    getProductById(doc).then((respo) => {
       setItemDet(respo);
       setIsLoadingDet(false);
     });
