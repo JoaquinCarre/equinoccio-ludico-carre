@@ -9,7 +9,7 @@ const Item = ({ id, title, pos, doc, genre, minPlayers, maxPlayers, time, age, p
   const listLogos = [logo1, logo2, logo3, logo4]
   return (
     <>
-      <div key={id} className='col bg-light rounded m-3 card'>
+      <div key={id} className='col bg-light rounded m-3 card border border-dark border-2 rounded-3'>
         <Link to={`/item/${doc}`}
           key={id}
           ><img width={150} src={listLogos[pos-1]} alt={id} className='card-img-top bg-primary'/></Link>
