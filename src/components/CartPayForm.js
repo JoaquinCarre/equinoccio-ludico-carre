@@ -1,10 +1,25 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CCImage from '../images/creditCard.png';
 import CartContext from "../context/CartContext";
+import { useForm } from "../hooks/useForm";
+import { deleteOrderCart } from '../firebase.js';
 
 const CartPayForm = () => {
-    const { clear } = useContext(CartContext);
+    const { clear, orderId, setOrderId, setOrderDoc } = useContext(CartContext);
+
+    //custom Hook
+    const { form, handleInputChange } = useForm();
+
+    const navigate = useNavigate();
+
+    function nextButton() {
+        if (!form.creditCardNumber || !form.creditCardMonthExpired || !form.creditCardYearExpired || !form.creditCardCVV || !form.creditCardHolderName) {
+            return (<button disabled className="btn btn-success btn-block">FINALIZAR COMPRA</button>);
+        } else {
+            return (<button className="btn btn-success btn-block" onClick={() => { clear(); localStorage.removeItem('actualOrder'); setOrderDoc(orderId); navigate(`/productBuyed`); }}>FINALIZAR COMPRA</button>);
+        }
+    }
 
     return (
         <div className="formWidth m-auto">
@@ -16,21 +31,21 @@ const CartPayForm = () => {
 
                         <div className="row ">
                             <div className="col-md-12">
-                                <input type="text" className="form-control" placeholder="Número de la Tarjeta" />
+                                <input type="text" className="form-control" placeholder="Número de la Tarjeta" name="creditCardNumber" value={form.creditCardNumber} onChange={handleInputChange} />
                             </div>
                         </div>
                         <div className="row ">
                             <div className="col-md-3 col-sm-3 col-xs-3">
                                 <span className="help-block text-muted small-font" > Mes de Vencimiento</span>
-                                <input type="text" className="form-control" placeholder="MM" />
+                                <input type="text" className="form-control" placeholder="MM" name="creditCardMonthExpired" value={form.creditCardMonthExpired} onChange={handleInputChange} />
                             </div>
                             <div className="col-md-3 col-sm-3 col-xs-3">
                                 <span className="help-block text-muted small-font" >  Año de Vencimiento</span>
-                                <input type="text" className="form-control" placeholder="AA" />
+                                <input type="text" className="form-control" placeholder="AA" name="creditCardYearExpired" value={form.creditCardYearExpired} onChange={handleInputChange} />
                             </div>
                             <div className="col-md-3 col-sm-3 col-xs-3">
                                 <span className="help-block text-muted small-font" >  CVV</span>
-                                <input type="text" className="form-control" placeholder="CVV" />
+                                <input type="text" className="form-control" placeholder="CVV" name="creditCardCVV" value={form.creditCardCVV} onChange={handleInputChange} />
                             </div>
                             <div className="col-md-3 col-sm-3 col-xs-3 text-start">
                                 <img src={CCImage} className="img-rounded mt-3 p-0" width={60} />
@@ -39,15 +54,18 @@ const CartPayForm = () => {
                         <div className="row ">
                             <div className="col-md-12 pad-adjust">
 
-                                <input type="text" className="form-control" placeholder="Nombre del Titular de la Tarjeta" />
+                                <input type="text" className="form-control" placeholder="Nombre del Titular de la Tarjeta" name="creditCardHolderName" value={form.creditCardHolderName} onChange={handleInputChange} />
                             </div>
                         </div>
                         <div className="row ">
-                            <div className="col-md-6 col-sm-6 col-xs-6 pad-adjust">
-                                <Link to="/cart"><input type="submit" className="btn btn-danger" value="CANCELAR" /></Link>
+                            <div className="col-md-4 col-sm-4 col-xs-4 pad-adjust">
+                                <button className="btn btn-dark" onClick={() => navigate(`/cartStep1`)}>ATRÁS</button>
                             </div>
-                            <div className="col-md-6 col-sm-6 col-xs-6 pad-adjust">
-                                <Link to="/productBuyed"><input type="submit" className="btn btn-success btn-block" value="FINALIZAR COMPRA" onClick={clear} /></Link>
+                            <div className="col-md-4 col-sm-4 col-xs-4 pad-adjust">
+                                <button className="btn btn-danger" onClick={() => {localStorage.removeItem('actualOrder'); deleteOrderCart(orderId); setOrderId(''); navigate(`/cart`);}}>CANCELAR ORDEN</button>
+                            </div>
+                            <div className="col-md-4 col-sm-4 col-xs-4 pad-adjust">
+                                {nextButton()}
                             </div>
                         </div>
 

@@ -1,27 +1,22 @@
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import CartContext from "../context/CartContext";
+import { useForm } from "../hooks/useForm";
 
 
 const CartForm = () => {
     const { sendOrder } = useContext(CartContext);
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [street1, setStreet1] = useState("");
-    const [street2, setStreet2] = useState("");
-    const [city, setCity] = useState("");
-    const [province, setProvince] = useState("");
-    const [zipCode, setZipCode] = useState("");
+    //custom Hook
+    const { form, handleInputChange } = useForm();
 
     const navigate = useNavigate();
 
-    const nextButton = () => {
-        if (!name || !email || !phone) {
-            return (<button disabled className="btn btn-primary">Siguiente</button>)
+    function nextButton() {
+        if (!form.name || !form.email || !form.phone || !form.street1 || !form.city || !form.state || !form.zipcode) {
+            return (<button disabled className="btn btn-primary">SIGUIENTE</button>);
         } else {
-            return (<button className="btn btn-primary" onClick={(e) => { e.preventDefault(); sendOrder(name, phone, email); navigate(`/cartStep2`) }}>Siguiente</button>)
+            return (<button className="btn btn-primary" onClick={() => { sendOrder(form.name, form.phone, form.email, form.street1, form.street2, form.city, form.state, form.zipcode); navigate(`/cartStep2`); } }>SIGUIENTE</button>);
         }
     }
 
@@ -32,72 +27,47 @@ const CartForm = () => {
             <form>
                 <div className="form-group">
                     <label for="full_name_id" className="control-label">Nombre Completo</label>
-                    <input type="text" className="form-control" id="full_name_id" value={name} name="full_name" placeholder="Nombres y Apellido" onChange={(e) => setName(e.target.value)}></input>
+                    <input type="text" className="form-control" id="full_name_id" value={form.name} name="name" placeholder="Nombres y Apellido" onChange={handleInputChange}></input>
                 </div>
 
                 <div className="form-group">
                     <label for="email_id" className="control-label">E-mail</label>
-                    <input type="email" className="form-control" id="email_id" value={email} name="email" placeholder="e-mail@ejemplo.com" onChange={(e) => setEmail(e.target.value)}></input>
+                    <input type="email" className="form-control" id="email_id" value={form.email} name="email" placeholder="e-mail@ejemplo.com" onChange={handleInputChange}></input>
                 </div>
 
                 <div className="form-group">
                     <label for="phone_id" className="control-label">Teléfono</label>
-                    <input type="number" className="form-control" id="phone_id" value={phone} name="phone" placeholder="123-1234567" onChange={(e) => setPhone(e.target.value)}></input>
+                    <input type="number" className="form-control" id="phone_id" value={form.phone} name="phone" placeholder="123-1234567" onChange={handleInputChange}></input>
                 </div>
 
                 <div className="form-group">
                     <label for="street1_id" className="control-label">Dirección de calle</label>
-                    <input type="text" className="form-control" id="street1_id" name="street1" placeholder="Calle 123"></input>
+                    <input type="text" className="form-control" id="street1_id" name="street1" placeholder="Calle 123" value={form.street1} onChange={handleInputChange}></input>
                 </div>
 
                 <div className="form-group">
                     <label for="street2_id" className="control-label">Otra dirección de calle</label>
-                    <input type="text" className="form-control" id="street2_id" name="street2" placeholder="Calle Alternativa 123"></input>
+                    <input type="text" className="form-control" id="street2_id" name="street2" placeholder="Calle Alternativa 123" value={form.street2} onChange={handleInputChange}></input>
                 </div>
 
                 <div className="form-group">
                     <label for="city_id" className="control-label">Ciudad</label>
-                    <input type="text" className="form-control" id="city_id" name="city" placeholder="Nombre de la ciudad"></input>
+                    <input type="text" className="form-control" id="city_id" name="city" placeholder="Nombre de la ciudad" value={form.city} onChange={handleInputChange}></input>
                 </div>
                 <div className="row">
                     <div className="form-group col">
                         <label for="state_id" className="control-label">Provincia</label>
-                        <select className="form-control" id="state_id">
-                            <option value="BA">Buenos Aires</option>
-                            <option value="BAC">Ciudad Autónoma de Buenos Aires</option>
-                            <option value="CA">Catamarca</option>
-                            <option value="CHA">Chaco</option>
-                            <option value="CHU">Chubut</option>
-                            <option value="COR">Córdoba</option>
-                            <option value="CORR">Corrientes</option>
-                            <option value="ER">Entre Ríos</option>
-                            <option value="FO">Formosa</option>
-                            <option value="JU">Jujuy</option>
-                            <option value="LP">La Pampa</option>
-                            <option value="LR">La Rioja</option>
-                            <option value="ME">Mendoza</option>
-                            <option value="MI">Misiones</option>
-                            <option value="NE">Neuquén</option>
-                            <option value="RN">Río Negro</option>
-                            <option value="SA">Salta</option>
-                            <option value="SJ">San Juan</option>
-                            <option value="SL">San Luis</option>
-                            <option value="SC">Santa Cruz</option>
-                            <option value="SF">Santa Fe</option>
-                            <option value="SE">Santiago del Estero</option>
-                            <option value="TF">Tierra del Fuego</option>
-                            <option value="TU">Tucumán</option>
-                        </select>
+                        <input type="text" className="form-control" id="state_id" name="state" placeholder="Nombre de la provincia" value={form.state} onChange={handleInputChange}></input>
                     </div>
 
                     <div className="form-group mb-2 col">
                         <label for="zip_id" className="control-label">Código Postal</label>
-                        <input type="number" className="form-control" id="zip_id" name="zip" placeholder="#####"></input>
+                        <input type="number" className="form-control" id="zip_id" name="zipcode" placeholder="#####" value={form.zipcode} onChange={handleInputChange}></input>
                     </div>
                 </div>
 
                 <div className="form-group text-center">
-                <button className="btn btn-dark mx-2" onClick={() => navigate(`/cart`)}>Volver al Carrito</button>
+                    <button className="btn btn-dark mx-2" onClick={() => navigate(`/cart`)}>VOLVER AL CARRITO</button>
                     {nextButton()}
                 </div>
 

@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc, getDocs, addDoc, collection, query, where, limit } from "firebase/firestore";
+import { getFirestore, doc, getDoc, getDocs, addDoc, deleteDoc, collection, query, where, limit } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDYSq1mpp_ZEVrxM5LpeFtDyGohNwGCRRI",
@@ -42,7 +42,15 @@ export const getProductById = async (productId) => {
   return (await getDoc(doc(db, "items", productId))).data();
 };
 
-export const getOrdersCart = async (order) => {
+export const addOrdersCart = async (order) => {
   const ordersCollection = collection(db, "orders");
   return await addDoc(ordersCollection, order);
 };
+
+export const deleteOrderCart = async (order)=>{
+  return await deleteDoc (doc(db, "orders", order))
+}
+
+export const getOrdersCart = async (order) => {
+  return (await (getDoc(doc(db, "orders", order)))).data();
+}

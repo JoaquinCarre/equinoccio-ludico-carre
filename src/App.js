@@ -11,6 +11,7 @@ import CartForm from './components/CartForm';
 import CartPayForm from './components/CartPayForm';
 import CartBuyed from './components/CartBuyed';
 import BoardGamesCatalog from './components/BoardGamesCatalog';
+import OrderInfo from './components/OrderInfo';
 
 function App () {
     return (
@@ -25,6 +26,7 @@ function App () {
             <Route path="categoria/:genre" element={(<ItemListContainer />)} />
           </Route>
           <Route path="item/:doc" element={(<ItemDetailContainer />)} />
+          <Route path='/order' element={(<OrderInfo />)} />
           <Route path="/cart" element={(<Cart />)} />
           <Route path="/cartStep1" element={(<CartForm />)} />
           <Route path="/cartStep2" element={(<CartPayForm />)} />

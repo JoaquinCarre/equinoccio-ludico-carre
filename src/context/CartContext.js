@@ -1,6 +1,5 @@
 import { createContext, useState } from 'react';
-import { getOrdersCart } from '../firebase.js';
-
+import { addOrdersCart } from '../firebase.js';
 
 const CartContext = createContext();
 
@@ -9,6 +8,20 @@ const CartProvider = ({ children }) => {
     const [totalP, setTotalP] = useState(0);
     const [totalQ, setTotalQ] = useState(0);
     const [orderId, setOrderId] = useState("");
+    const [orderDoc, setOrderDoc] = useState('');
+    const [stockFree, setStockFree] = useState (7); /* poner valor inicial de cada producto para el stock */
+
+
+    const itemStock = (initial, unitsChoosed) => {
+        let stockCalc = initial;
+        console.log(initial);
+        console.log(unitsChoosed);
+        console.log('11111s', stockCalc)
+        if (unitsChoosed) {
+            stockCalc = stockFree - unitsChoosed
+            setStockFree(stockCalc);
+        }
+    };
 
     const isInCart = (itemId) => {
         const didExist = cart.find(el => el.title === itemId);
@@ -37,8 +50,8 @@ const CartProvider = ({ children }) => {
         } else {
             const addItemQuantity = addQuantity(item.quantity, item.title);
             const removeRepeatItemCart = cart.filter(el => el.title !== item.title);
+            //sumarle al producto que se haya elegido la cantidad agregada desde ItemDetail al carrito para que el mismo no se duplique 
             setCart([...removeRepeatItemCart, addItemQuantity]);
-            //sumarle al producto que se haya elegido la cantidad agrtegada desde ItemDetail al carrito para que el mismo no se duplique 
         }
     };
     console.log(cart);
@@ -52,18 +65,19 @@ const CartProvider = ({ children }) => {
         setCart([]);
     }
 
-    const sendOrder = async (name, phone, email) => {
+    const sendOrder = (name, phone, email, street1, street2, city, state, zipcode) => {
         const order = {
-            buyer: { name: { name }, phone: { phone }, email: { email } },
+            buyer: { name: { name }, phone: { phone }, email: { email }, street1: { street1 }, street2: { street2 }, city: { city }, state: { state }, zipcode: { zipcode } },
             item: cart.map((el) => ({ id: el.title, title: el.title, price: el.price })),
             date: new Date(),
             total: totalP,
         }
-        getOrdersCart(order).then(({ id }) => setOrderId(id));
+        localStorage.setItem('actualOrder', JSON.stringify(order));
+        addOrdersCart(order).then(({ id }) => setOrderId(id));
         console.log(order);
     }
 
-    const data = { cart, isInCart, addTotalPrice, totalP, setTotalP, addTotalQuantity, totalQ, setTotalQ, addItem, removeItem, clear, sendOrder, orderId }
+    const data = { cart, isInCart, addTotalPrice, totalP, setTotalP, addTotalQuantity, totalQ, setTotalQ, addItem, removeItem, clear, sendOrder, orderId, setOrderId, orderDoc, setOrderDoc, stockFree, itemStock }
 
     return (
         <CartContext.Provider value={data}>

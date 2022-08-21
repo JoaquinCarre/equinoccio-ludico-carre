@@ -1,12 +1,14 @@
 import { useContext } from 'react';
 import logo from '../miniEquinoccioLudicoLogo.png';
 import CartWidget from './CartWidget';
+import OrderWidget from './OrderWidget';
 import { Link } from 'react-router-dom';
 import CartContext from "../context/CartContext";
 
 
 function Navbar() {
-  const { cart } = useContext(CartContext);
+  const { cart, orderId } = useContext(CartContext);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -22,7 +24,7 @@ function Navbar() {
                 <Link to="/" className="nav-link active" aria-current="page">Inicio</Link>
               </li>
               <li className="nav-item">
-              <Link to="/catalogo" className="nav-link active" aria-current="page">Catálogo de Juegos</Link>
+                <Link to="/catalogo" className="nav-link active" aria-current="page">Catálogo de Juegos</Link>
               </li>
               <li className="nav-item">
                 <Link to="/tienda" className="nav-link active" aria-current="page">Tienda</Link>
@@ -31,7 +33,10 @@ function Navbar() {
                 <a className="nav-link disabled">Contacto</a>
               </li>
             </ul>
-            {cart.length !== 0 ? <CartWidget cart={cart} /> : <></> }
+            <div className='d-flex ms-auto'>
+              {orderId.length !==0 ? <OrderWidget /> : <></>}
+              {cart.length !== 0 ? <CartWidget cart={cart} /> : <></>}
+            </div>
           </div>
         </div>
       </nav>
