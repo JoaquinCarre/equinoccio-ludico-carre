@@ -29,7 +29,7 @@ En el primer componente se muestra una breve introducción de la editorial, mien
 
 ![image](./src/images/InicioYCatalogoDeJuegos.gif)
 
-1.**TIENDA**
+2.**TIENDA**
 
 Es el componente principal del proyecto en el cual el usuario podrá elegir los distintos productos en venta y agregar al carrito de compras para realizar la compra de los mismos.
 Además, podrá filtrar los mismos según su género y añadir cada productos varias veces hasta donde el stock lo permita.
