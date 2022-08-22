@@ -3,9 +3,8 @@
 Este proyecto forma parte del curso de ReactJS de CoderHouse (Comisión 38240) como entrega final del mismo. Tiene como objetivo lograr crear una aplicación apta para publicar en el portfolio personal de cada alumno.
 El proyecto consiste en una aplicación web que contiene un e-commerce para juegos de mesa creados por la editorial que le da nombre al mismo. 
 
-## Mis Datos
-**Nombre:** Joaquín Manuel Carré
-**Cursos Realizados:** Desarrollo Web, Programación Web (Javascript) y ReactJS (actual)
+## Alumno
+**Nombre:** Joaquín Manuel Carré  **Cursos Realizados:** Desarrollo Web, Programación Web (Javascript) y ReactJS (actual)
 
 ## Scripts Disponibles
 
@@ -22,13 +21,11 @@ Esta aplicación se iniciará en la siguiente dirección:
 ### Navegación por la aplicación
 Para la navegación principal se tiene una barra de navegación con los items disponibles de **INICIO**, **CATÁLOGO DE JUEGOS** y **TIENDA** y un cuarto item aún en fase de desarrollo que es el de **CONTACTO**.
 
-**INICIO Y CATÁLOGO DE JUEGOS**
-En el primer componente se muestra una breve introducción de la editorial, mientras que en el segundo una breve descripción de los juegos editados.
+1.**INICIO Y CATÁLOGO DE JUEGOS**  En el primer componente se muestra una breve introducción de la editorial, mientras que en el segundo una breve descripción de los juegos editados.
 
 ![image](./src/images/InicioYCatalogoDeJuegos.gif)
 
-**TIENDA**
-Es el componente principal del proyecto en el cual el usuario podrá elegir los distintos productos en venta y agregar al carrito de compras para realizar la compra de los mismos.
+1.**TIENDA**  Es el componente principal del proyecto en el cual el usuario podrá elegir los distintos productos en venta y agregar al carrito de compras para realizar la compra de los mismos.
 Además, podrá filtrar los mismos según su género y añadir cada productos varias veces hasta donde el stock lo permita.
 
 ![image](./src/images/AgregadoDeProductosAlCarrito.gif)
