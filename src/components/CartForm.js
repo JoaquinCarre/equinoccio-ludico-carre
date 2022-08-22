@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
 import CartContext from "../context/CartContext";
 import { useForm } from "../hooks/useForm";
@@ -16,7 +16,7 @@ const CartForm = () => {
         if (!form.name || !form.email || !form.phone || !form.street1 || !form.city || !form.state || !form.zipcode) {
             return (<button disabled className="btn btn-primary">SIGUIENTE</button>);
         } else {
-            return (<button className="btn btn-primary" onClick={() => { sendOrder(form.name, form.phone, form.email, form.street1, form.street2, form.city, form.state, form.zipcode); navigate(`/cartStep2`); } }>SIGUIENTE</button>);
+            return (<button className="btn btn-primary" onClick={() => { sendOrder(form.name, form.phone, form.email, form.street1, form.street2, form.city, form.state, form.zipcode); navigate(`/cartStep2`); }}>SIGUIENTE</button>);
         }
     }
 

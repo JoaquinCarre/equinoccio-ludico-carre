@@ -13,7 +13,7 @@ function Navbar() {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link to="/" className="nav-link active" aria-current="page"><img src={logo} width={30} height={30}></img></Link>
+          <Link to="/" className="nav-link active" aria-current="page"><img src={logo} alt="logo Equinoccio Ludico" width={30} height={30}></img></Link>
           <p className='m-0 p-2 text-primary d-flex'><div className='fw-bold'>E</div>quinoccio <div className='fw-bold'>L</div>udico</p>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

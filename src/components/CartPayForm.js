@@ -48,7 +48,7 @@ const CartPayForm = () => {
                                 <input type="text" className="form-control" placeholder="CVV" name="creditCardCVV" value={form.creditCardCVV} onChange={handleInputChange} />
                             </div>
                             <div className="col-md-3 col-sm-3 col-xs-3 text-start">
-                                <img src={CCImage} className="img-rounded mt-3 p-0" width={60} />
+                                <img src={CCImage} alt="Credit Card Icon" className="img-rounded mt-3 p-0" width={60} />
                             </div>
                         </div>
                         <div className="row ">
