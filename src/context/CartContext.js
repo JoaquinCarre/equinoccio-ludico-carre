@@ -9,17 +9,31 @@ const CartProvider = ({ children }) => {
     const [totalQ, setTotalQ] = useState(0);
     const [orderId, setOrderId] = useState("");
     const [orderDoc, setOrderDoc] = useState('');
-    const [stockFree, setStockFree] = useState (7); /* poner valor inicial de cada producto para el stock */
 
+    const [stockRobomekeFree, setStockRobomekeFree] = useState(20);
+    const [stockPancuFree, setStockPancuFree] = useState(15);
+    const [stockRoliwarFree, setStockRoliwarFree] = useState(18);
+    const [stockEdificiosLocosFree, setStockEdificiosLocosFree] = useState(7);
 
-    const itemStock = (initial, unitsChoosed) => {
+    const itemStock = (initial, unitsChoosed, title) => {
         let stockCalc = initial;
-        console.log(initial);
-        console.log(unitsChoosed);
-        console.log('11111s', stockCalc)
         if (unitsChoosed) {
-            stockCalc = stockFree - unitsChoosed
-            setStockFree(stockCalc);
+            if (title === 'Robomeke') {
+                stockCalc = stockRobomekeFree - unitsChoosed;
+                setStockRobomekeFree(stockCalc);
+            };
+            if (title === 'Pancú') {
+                stockCalc = stockPancuFree - unitsChoosed;
+                setStockPancuFree(stockCalc);
+            };
+            if (title === 'Roliwar') {
+                stockCalc = stockRoliwarFree - unitsChoosed;
+                setStockRoliwarFree(stockCalc);
+            };
+            if (title === 'Edificios Locos') {
+                stockCalc = stockEdificiosLocosFree - unitsChoosed;
+                setStockEdificiosLocosFree(stockCalc);
+            };
         }
     };
 
@@ -58,10 +72,26 @@ const CartProvider = ({ children }) => {
 
     const removeItem = (item) => {
         const cartRemoveItem = cart.filter(el => el.title !== item.title);
+        if (item.title === 'Robomeke') {
+            setStockRobomekeFree(20);
+        };
+        if (item.title === 'Pancú') {
+            setStockPancuFree(15);
+        };
+        if (item.title === 'Roliwar') {
+            setStockRoliwarFree(18);
+        };
+        if (item.title === 'Edificios Locos') {
+            setStockEdificiosLocosFree(7);
+        };
         setCart(cartRemoveItem);
     }
 
     const clear = () => {
+        setStockRobomekeFree(20);
+        setStockPancuFree(15);
+        setStockRoliwarFree(18);
+        setStockEdificiosLocosFree(7);
         setCart([]);
     }
 
@@ -77,7 +107,7 @@ const CartProvider = ({ children }) => {
         console.log(order);
     }
 
-    const data = { cart, isInCart, addTotalPrice, totalP, setTotalP, addTotalQuantity, totalQ, setTotalQ, addItem, removeItem, clear, sendOrder, orderId, setOrderId, orderDoc, setOrderDoc, stockFree, itemStock }
+    const data = { cart, isInCart, addTotalPrice, totalP, setTotalP, addTotalQuantity, totalQ, setTotalQ, addItem, removeItem, clear, sendOrder, orderId, setOrderId, orderDoc, setOrderDoc, itemStock, stockRobomekeFree, stockPancuFree, stockRoliwarFree, stockEdificiosLocosFree }
 
     return (
         <CartContext.Provider value={data}>

@@ -23,7 +23,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
     const orderLoaded = JSON.parse(localStorage.getItem('actualOrder'));
 
-    console.log('ccc', orderId);
+    console.log('ID orden de compra:', orderId);
 
     useEffect(() => {
         setIsOrder(orderLoaded);
@@ -70,7 +70,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
             <p className="fs-2">Agregaste {count} unidades</p>
         </div>
             <div>
-                <Link to="/tienda" ><button className="btn btn-primary opacity-75">Continuar Comprando...</button></Link> <Link to="/cart" ><button className="btn btn-success">Finalizar Compra</button></Link>
+                <Link to="/tienda" ><button className="btn btn-primary opacity-75">CONTINUAR COMPRANDO...</button></Link> <Link to="/cart" ><button className="btn btn-success">IR AL CARRITO</button></Link>
             </div>
         </>)
     }

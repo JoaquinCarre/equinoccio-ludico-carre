@@ -8,7 +8,7 @@ import logo4 from '../images/cajaEdificiosLocos.png';
 
 const Cart = () => {
     const listLogos = [logo1, logo2, logo3, logo4];
-    const { cart, removeItem, clear, addTotalPrice, totalP, setTotalP } = useContext(CartContext);
+    const { cart, removeItem, clear, addTotalPrice, totalP, setTotalP, setStockRobomekeFree, setStockPancuFree, setStockRoliwarFree, setStockEdificiosLocosFree } = useContext(CartContext);
 
     useEffect(() => {
         addTotalPrice()

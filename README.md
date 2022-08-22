@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# EDITORIAL EQUINOCCIO LUDICO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto forma parte del curso de ReactJS de CoderHouse (Comisión 38240) como entrega final del mismo. Tiene como objetivo lograr crear una aplicación apta para publicar en el portfolio personal de cada alumno.
+El proyecto consiste en una aplicación web que contiene un e-commerce para juegos de mesa creados por la editorial que le da nombre al mismo. 
 
-## Available Scripts
+## Mis Datos
+**Nombre:** Joaquín Manuel Carré
+**Cursos Realizados:** Desarrollo Web, Programación Web (Javascript) y ReactJS (actual)
 
-In the project directory, you can run:
+## Scripts Disponibles
+
+Para iniciar la aplicación se debe ejecutar desde la terminal el comando:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Esta aplicación se iniciará en la siguiente dirección:
+[http://localhost:3000](http://localhost:3000)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Versión 0.9
+**`Aclaración:`** Esta aplicación está aún en proceso de desarrollo y por el momento no se recomienda recargar la misma (F5) ya que podría generar errores en el proceso de compra.
 
-### `npm test`
+### Navegación por la aplicación
+Para la navegación principal se tiene una barra de navegación con los items disponibles de **INICIO**, **CATÁLOGO DE JUEGOS** y **TIENDA** y un cuarto item aún en fase de desarrollo que es el de **CONTACTO**.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**INICIO Y CATÁLOGO DE JUEGOS**
+En el primer componente se muestra una breve introducción de la editorial, mientras que en el segundo una breve descripción de los juegos editados.
 
-### `npm run build`
+![image](./src/images/InicioYCatalogoDeJuegos.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**TIENDA**
+Es el componente principal del proyecto en el cual el usuario podrá elegir los distintos productos en venta y agregar al carrito de compras para realizar la compra de los mismos.
+Además, podrá filtrar los mismos según su género y añadir cada productos varias veces hasta donde el stock lo permita.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](./src/images/AgregadoDeProductosAlCarrito.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+En el carrito de compras podrá eliminar los productos que eligió mal o deshacer todo el carrito de compras, a su vez, si se decide por comprar todo lo seleccionado continuará con el completado de un formulario con sus datos para generar una orden de compra.
+Al generar una orden de compra se añadirá un widget con un signo de interrogación como badge (!) donde estarán todos los datos agregados en el formulario de compra y el número de orden de compra.
+El usuario tendrá la opción de arrepentirse y cancelar la misma. En el caso que no lo haga no podrá editar su carrito de compras hasta no continuar con la orden generada.
+Si el usuario decide proseguir con el pago, una vez que se completen los datos de la tarjeta de crédito/débito, finalizará la compra.
 
-### `npm run eject`
+![image](./src/images/PagoDeLosProductosAgregados.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Por otro lado, se trabaja con Firebase, utilizando la base de datos de Firestore para almacenar la orden de compra realizada, o si se cancela la orden se eliminará de esta base de datos. En el caso de finalizar la compra con el pago, la orden quedará guardada.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![image](./src/images/EnlaceConFirebase.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
