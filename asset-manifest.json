@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/equinoccio-ludico-carre/static/css/main.d5d78d19.css",
-    "main.js": "/equinoccio-ludico-carre/static/js/main.ff82a97a.js",
+    "main.css": "/equinoccio-ludico-carre/static/css/main.2d94aa5e.css",
+    "main.js": "/equinoccio-ludico-carre/static/js/main.fc41713b.js",
     "static/js/787.ad5f21fe.chunk.js": "/equinoccio-ludico-carre/static/js/787.ad5f21fe.chunk.js",
     "static/media/cajaRoliwar.png": "/equinoccio-ludico-carre/static/media/cajaRoliwar.340fa7d284575f5d5ed0.png",
     "static/media/cajaRobomeke.png": "/equinoccio-ludico-carre/static/media/cajaRobomeke.c2ef039fa052e83ba1c6.png",
@@ -9,12 +9,12 @@
     "static/media/cajaPancú.png": "/equinoccio-ludico-carre/static/media/cajaPancú.bd404f42695716fe1b56.png",
     "static/media/miniEquinoccioLudicoLogo.png": "/equinoccio-ludico-carre/static/media/miniEquinoccioLudicoLogo.25a0320df65928827d51.png",
     "index.html": "/equinoccio-ludico-carre/index.html",
-    "main.d5d78d19.css.map": "/equinoccio-ludico-carre/static/css/main.d5d78d19.css.map",
-    "main.ff82a97a.js.map": "/equinoccio-ludico-carre/static/js/main.ff82a97a.js.map",
+    "main.2d94aa5e.css.map": "/equinoccio-ludico-carre/static/css/main.2d94aa5e.css.map",
+    "main.fc41713b.js.map": "/equinoccio-ludico-carre/static/js/main.fc41713b.js.map",
     "787.ad5f21fe.chunk.js.map": "/equinoccio-ludico-carre/static/js/787.ad5f21fe.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d5d78d19.css",
-    "static/js/main.ff82a97a.js"
+    "static/css/main.2d94aa5e.css",
+    "static/js/main.fc41713b.js"
   ]
 }
